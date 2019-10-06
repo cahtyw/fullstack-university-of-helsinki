@@ -1,0 +1,42 @@
+user->browser: writes an text inside the input element and clicks the save button
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note
+note over browser:
+    browser send an POST request 
+    to the server with the content 
+    of the input element attached
+    as an field named 'note'
+end note
+server->browser: sends an redirect status code with the location /notes of the same origin
+note over server:
+    the redirect status code and 
+    the location attached on 
+    the response makes the browser
+    call an GET request to the server
+    on the location value indicated
+end note
+browser->server: HTTP GET /notes
+server->browser: html-code
+browser->server: HTTP GET /main.css
+server->browser: main.css
+browser->server: HTTP GET /main.js
+server->browser: main.js
+note over browser
+    browser executes the 
+    javascript code and
+    makes an request to 
+    retrive data.json
+end note
+browser->server: HTTP GET /data.json
+server->browser: [{"content":"HTML is easy","date":"2019-05-23T17:30:31.098Z"},...]
+note over browser:
+    browser recieves the
+    json response and parses
+    it as an javascript object
+    then does an loop throw it
+    to render 'li' elements for
+    each note on the array of
+    notes inside the 'ul' created
+    and anchor the 'ul' inside a 
+    'div' with id 'notes'
+end note
+

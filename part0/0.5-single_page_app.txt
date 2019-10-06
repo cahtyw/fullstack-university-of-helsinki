@@ -1,0 +1,24 @@
+browser->server: HTTP GET /spa
+server->browser: html document
+browser->server: HTTP GET /main.css
+server->browser: main.css
+browser->server: HTTP GET spa.js
+server->browser: spa.js
+note over browser
+    browser executes the javascript
+    defined inside spa.js and makes
+    an request to retrieve data from
+    data.json from the server
+end note
+browser->server: HTTP GET data.json
+server->browser: data.json
+note over browser
+    data.json is retrieved from the 
+    server, then the browser calls 
+    its function (redrawNotes) to
+    render an 'ul' with an 'li' for each
+    note inside the array of notes 
+    retrieved and then anchors it
+    inside the 'div' with id notes
+end note
+

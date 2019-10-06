@@ -1,0 +1,16 @@
+browser->server: HTTP POST /new_note_spa
+note over browser:
+    browser prevents the default behaviour
+    of the form to reload the page, draws the
+    input text to the list of notes and 
+    sends an POST request to the server 
+    with the content of the input 
+    element attached as json
+end note
+server->browser: 201 created {"message": "note created"}
+note over server:
+    server returns 201 created 
+    to the browser, doesn't 
+    attach any redirect
+end note
+
